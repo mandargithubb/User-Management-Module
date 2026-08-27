@@ -11,9 +11,9 @@
     "test": "vitest run",
     "lint": "eslint src --ext .ts",
     "format": "prettier --write src/**/*.ts tests/**/*.ts",
-    "db:push": "npx prisma db push",
+    "db:push": "prisma db push",
     "db:seed": "tsx prisma/seed.ts",
-    "postinstall": "npx prisma generate"
+    "postinstall": "prisma generate"
   },
   "keywords": [],
   "author": "",
