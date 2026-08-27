@@ -1,0 +1,78 @@
+<div class="min-vh-100 d-flex align-items-center justify-content-center bg-light px-3">
+  <div class="card shadow-lg border-0 login-card">
+    <div class="card-body p-4 p-md-5">
+      <div class="text-center mb-4">
+        <div class="d-inline-flex align-items-center justify-content-center rounded-circle bg-primary-subtle text-primary mb-3 login-icon">
+          <i class="bi bi-person-lock fs-3" aria-hidden="true"></i>
+        </div>
+        <h1 class="h3 mb-1">Welcome back</h1>
+        <p class="text-muted mb-0">Sign in to manage users</p>
+      </div>
+
+      <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+        <div class="mb-3">
+          <label class="form-label" for="username">Username</label>
+          <input
+            id="username"
+            type="text"
+            class="form-control"
+            formControlName="username"
+            [class.is-invalid]="username.invalid && (username.dirty || username.touched)"
+            aria-describedby="username-help username-error"
+          />
+          <div id="username-help" class="form-text">Use the demo username.</div>
+          @if (username.invalid && (username.dirty || username.touched)) {
+            <div id="username-error" class="invalid-feedback d-block">
+              @if (username.errors?.['required']) {
+                <span>Username is required.</span>
+              }
+              @if (username.errors?.['minlength']) {
+                <span>Username must be at least 3 characters.</span>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="password">Password</label>
+          <input
+            id="password"
+            type="password"
+            class="form-control"
+            formControlName="password"
+            [class.is-invalid]="password.invalid && (password.dirty || password.touched)"
+            aria-describedby="password-help password-error"
+          />
+          <div id="password-help" class="form-text">Use the demo password.</div>
+          @if (password.invalid && (password.dirty || password.touched)) {
+            <div id="password-error" class="invalid-feedback d-block">
+              @if (password.errors?.['required']) {
+                <span>Password is required.</span>
+              }
+              @if (password.errors?.['minlength']) {
+                <span>Password must be at least 6 characters.</span>
+              }
+            </div>
+          }
+        </div>
+
+        @if (errorMessage()) {
+          <div class="alert alert-danger" role="alert">{{ errorMessage() }}</div>
+        }
+
+        <button type="submit" class="btn btn-primary w-100 py-2" [disabled]="form.invalid || loading()">
+          @if (loading()) {
+            <span class="spinner-border spinner-border-sm me-2" aria-hidden="true"></span>
+          }
+          {{ loading() ? 'Signing in...' : 'Login' }}
+        </button>
+      </form>
+
+      <div class="mt-4 p-3 bg-body-tertiary rounded">
+        <small class="text-muted d-block">Demo credentials</small>
+        <small class="fw-semibold">Username: admin</small><br />
+        <small class="fw-semibold">Password: admin123</small>
+      </div>
+    </div>
+  </div>
+</div>

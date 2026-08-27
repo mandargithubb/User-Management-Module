@@ -1,0 +1,29 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+
+:root {
+  color-scheme: light;
+}
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f8f9fa;
+}
+
+body {
+  min-height: 100vh;
+}
+
+button,
+input,
+select {
+  transition: all 0.2s ease;
+}
+
+.form-control:focus,
+.form-select:focus,
+.btn:focus-visible {
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.15);
+}
